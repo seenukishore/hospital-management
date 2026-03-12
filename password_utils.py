@@ -1,4 +1,5 @@
 from cryptography.fernet import Fernet
+import os
 
 class fakestr(str):
     def __str__(self):
@@ -7,7 +8,9 @@ class fakestr(str):
         return "***********"
 
 def load_key():
-    return open("secret.key", "rb").read()
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    key_path = os.path.join(base_dir, "secret.key")
+    return open(key_path, "rb").read()
 
 def encrypt_password(password):
     key = load_key()

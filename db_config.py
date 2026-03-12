@@ -1,4 +1,5 @@
 import mysql.connector
+import os
 from password_utils import get_decrypted_password
 
 def get_connection():
